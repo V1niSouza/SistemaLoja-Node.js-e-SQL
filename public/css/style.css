@@ -1,0 +1,49 @@
+body {
+    background-color: #f1f1f1;
+}
+
+ul {
+    list-style: square;
+    line-height: 30px;
+}
+
+a {
+    color:#0ba7c6;
+    text-decoration: none;
+    padding: 20px;
+}
+
+th, td {
+    padding: 10px;
+}
+
+footer {
+    text-align: center;    
+}
+
+div{
+    border-width: 0px;
+}
+
+.btn-outline-secondary{
+    color: #212529;
+}
+
+.btn-outline-secondary:hover{
+    background-color: #6096B3;
+    color: #212529
+}
+
+.btn-outline-dark{
+    color: #212529;
+}
+
+.btn-outline-dark:hover{
+    background-color: #6096B3;
+    color: #212529;
+}
+
+.card-img-top:hover{
+    border-radius: 15px 15px 15px 15px;
+    opacity: 0.5;
+}

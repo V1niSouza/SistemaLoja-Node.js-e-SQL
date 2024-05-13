@@ -1,0 +1,67 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Cadastro de Pedido</h1>
+        </div>
+        <div class="card-body">
+            <form action="/pedidos/new" method="POST">
+                <label>• Nº Pedido:</label>
+                <input type="text" name="numero" placeholder="Insira o Nº do pedido" class="form-control" required>
+                <label>• Valor:</label>
+                <input type="text" name="valor" placeholder="Insira o valor do pedido" class="form-control" required>
+                <label>• Tipo Pagamento:</label>
+                <input type="text" name="tpagamento" placeholder="Insira o tipo de pagamento" class="form-control" required>
+                <label>• Status:</label>
+                <input type="text" name="status" placeholder="Insira o status" class="form-control" required>
+                <br>
+                <input type="submit" value="Cadastrar" class="btn btn-outline-primary ">
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Pedidos</h1>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th><i class="fa-solid fa-barcode"></i> Número:</th>
+                            <th><i class="fa-solid fa-dollar-sign"></i> Valor:</th>
+                            <th><i class="fa-solid fa-sack-dollar"></i> Tipo Pagamento:</th>
+                            <th><i class="fa-solid fa-receipt"></i> Status:</th>
+                            <th style="text-align: center;" colspan="2">Ações:</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% pedidos.forEach(pedido => { %>
+                        <tr>
+                            <td><img src="imgs/dolly-solid.png" width="30px"></td>
+                            <td><%= pedido.numero %></td>
+                            <td><%= pedido.valor.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></td>
+                            <td><%= pedido.tpagamento %></td>
+                            <td><%= pedido.status%></td>
+                            <td>
+                                <a type="button" class="btn btn-outline-warning" href="/pedidos/edit/<%= pedido.id%>">Editar</a></td>
+                            <td>
+                                <a type="button" class="btn btn-outline-danger" href="/pedidos/delete/<%= pedido.id%>" onclick="return confirm('Deseja esmo excluir o Pedido: <%=pedido.numero%>?')">Exluir</a>
+                            </td>
+
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<br><br><br><br>
+<%- include ('partials/footer.ejs') %>

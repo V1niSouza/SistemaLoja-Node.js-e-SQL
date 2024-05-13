@@ -1,0 +1,61 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+
+
+    <div class="container">
+        
+        <div class="jumbotron">
+            <br>
+            <h1 class="display-8"><strong class="row d-flex justify-content-center">Bem-vindo(a) a loja Souza Store!</strong></h1>
+            <p class="lead, row d-flex justify-content-center" >Aqui você explora as últimas tendências em eletrônicos e encontra exatamente o que você precisa para acompanhar o ritmo da tecnologia!</p>
+            <h5 class="display-10"><strong class="row d-flex justify-content-center">CATEGORIAS DOS APARELHOS ELETRÔNICOS:</strong></h5>
+            <hr class="my-4">
+            <p class="currentDate"></p>
+            </p>  
+            
+            <div class="card-group">
+              <% indexs.forEach(categorias => { %>
+                <div class="card">
+                 <div class="btn btn-outline-secondary">
+                  <img src="imgs/<%=categorias.imgs %>" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= categorias.title %></h5>
+                    <p class="card-text"><%= categorias.desc %></p>
+                  </div>
+                  <div class="card-footer">
+                    <small class="text-muted"><%= categorias.desc2 %></small>
+                  </div>
+                  </div>
+                </div>  
+              <% }) %>             
+            </div>
+
+            <div class="card mb-3">
+              <% indexs_2.forEach(categorias => { %>
+                <div class="btn btn-outline-secondary">
+                <img src="imgs/<%=categorias.imgs %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%= categorias.title %></h5>
+                  <p class="card-text"><%= categorias.desc %></p>
+                  <div class="card-footer">
+                    <small class="text-muted"><%= categorias.desc2 %></small>
+                  </div>
+                </div>
+            </div>
+            <% }) %> 
+          </div>  
+        <hr>
+        <div class="card">
+            <div class="card-header">
+                <h1 class="row d-flex justify-content-center">Escolha uma das opções:</h1>
+            </div>
+            <div class="btn-group btn-group-lg">
+                <a type="button" class="btn btn-outline-dark" href="/clientes">Clientes</a>
+                <a type="button" class="btn btn-outline-dark" href="/produtos">Produtos</a>
+                <a type="button" class="btn btn-outline-dark" href="/pedidos">Pedidos</a>
+              </div>
+        </div>
+        </div>
+    </div>
+    
+<%- include ('partials/footer.ejs') %>

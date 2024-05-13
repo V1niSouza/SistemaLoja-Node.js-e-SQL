@@ -1,0 +1,66 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Cadastro de Produto</h1>
+        </div>
+        <div class="card-body">
+            <form action="/produtos/new" method="POST">
+                <label>• Nome:</label>
+                <input type="text" name="nome" placeholder="Insira o nome do produto" class="form-control" required>
+                <label>• Categoria:</label>
+                <input type="text" name="categoria" placeholder="Insira a categoria" class="form-control" required>
+                <label>• Preço:</label>
+                <input type="text" name="preco" placeholder="Insira o preço" class="form-control" required>
+                <label>• Quantidade em Estoque:</label>
+                <input type="text" name="qtd" placeholder="Insira a quantidade em estoque" class="form-control" required>
+                <br>
+                <input type="submit" value="Cadastrar" class="btn btn-outline-primary ">
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Produtos</h1>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th><i class="fa-solid fa-file"></i> Nome:</th>
+                            <th><i class="fa-solid fa-info"></i> Categoria:</th>
+                            <th><i class="fa-solid fa-dollar-sign"></i> Preço:</th>
+                            <th><i class="fa-solid fa-cubes"></i> Quantidade em Estoque:</th>
+                            <th style="text-align: center;" colspan="2">Ações:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% produtos.forEach(produto => { %>
+                        <tr>
+                            <td><img src="imgs/box-archive-solid.jpg" width="25px"></td>
+                            <td><%= produto.nome %></td>
+                            <td><%= produto.categoria %></td>
+                            <td><%= produto.preco.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></td>
+                            <td><%= produto.qtd %></td>
+                            <td>
+                                <a type="button" class="btn btn-outline-warning" href="/produtos/edit/<%= produto.id%>">Editar</a></td>
+                            <td>
+                                <a type="button" class="btn btn-outline-danger" href="/produtos/delete/<%= produto.id%>" onclick="return confirm('Deseja esmo excluir o Produto: <%=produto.nome%>?')">Exluir</a>
+                            </td>
+
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<%- include ('partials/footer.ejs') %>

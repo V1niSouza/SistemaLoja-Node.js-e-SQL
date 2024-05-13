@@ -1,0 +1,68 @@
+<%- include ('partials/header.ejs') %>
+    <%- include ('partials/navbar.ejs') %>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Cadastro de Cliente</h1>
+            </div>
+            <div class="card-body">
+                <form action="/clientes/new" method="POST">
+                    <label>• Nome do Cliente:</label>
+                    <input type="text" name="nome" placeholder="Insira nome do cliente" class="form-control" required>
+                    <label>• CPF do cliente:</label>
+                    <input type="text" name="cpf" placeholder="Insira cpf do cliente" class="form-control" required>
+                    <label>• Endereço do cliente:</label>
+                    <input type="text" name="endereco" placeholder="Insira endereço do cliente" class="form-control" required>
+                    <br>
+                    <input type="submit" value="Cadastrar" class="btn btn-outline-primary ">
+                </form>
+                <hr>
+            </div>
+        </div>
+    </div>
+    
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Clientes</h1>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th><i class="fa-solid fa-person"></i> Nome: </th>
+                                <th><i class="fa-solid fa-address-card"></i> </i> CPF:</th>
+                                <th><i class="fa-solid fa-location-dot"></i> Endereço:</th>
+                                <th style="text-align: center;" colspan="2">Ações:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% clientes.forEach(cliente=> { %>
+                                <tr>
+                                    <td><img src="imgs/clipboard-user-solid.jpg" width="20px"></td>
+                                    <td>
+                                        <%= cliente.nome %>
+                                    </td>
+                                    <td>
+                                        <%= cliente.cpf %>
+                                    </td>
+                                    <td>
+                                        <%= cliente.endereco %>
+                                    </td>
+                                    <td>
+                                        <a type="button" class="btn btn-outline-warning" href="/clientes/edit/<%= cliente.id%>">Editar</a></td>
+                                    <td>
+                                        <a type="button" class="btn btn-outline-danger" href="/clientes/delete/<%= cliente.id%>" onclick="return confirm('Deseja esmo excluir o cliente <%=cliente.nome%>?')">Exluir</a>
+                                    </td>
+
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+<br><br><br><br>
+<%- include ('partials/footer.ejs') %>
